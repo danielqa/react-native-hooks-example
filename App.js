@@ -14,7 +14,7 @@ import TesteHook from "./components/TesteHook";
 
 const App = () => {
     let text = '';
-    const [description, setDescription] = useState('Testando React Hooks on React Native');
+    const [description, setDescription] = useState('Testando React Hooks on React Native for SAJ ADV');
 
     const onChangeTextInput = textInputed => {
         text = textInputed;

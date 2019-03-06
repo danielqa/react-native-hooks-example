@@ -4,7 +4,7 @@ import {StyleSheet, Text} from 'react-native';
 const TesteHook = ({text}) => {
 
     useEffect(() => {
-        console.log('It works: ', text);
+        alert(`It works: ${text}`);
     }, [text]);
 
     return (
