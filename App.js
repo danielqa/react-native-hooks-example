@@ -7,39 +7,52 @@
  * @lint-ignore-every XPLATJSCOPYRIGHT1
  */
 
-import React, {useState} from 'react';
-import {Button, StyleSheet, TextInput, View} from 'react-native';
+import React from 'react';
+import {Text} from 'react-native';
+import {Header, Icon} from 'react-native-elements';
+import SideMenu from 'react-native-side-menu';
 
-import TesteHook from "./components/TesteHook";
+import HomeScreen from "./src/screens/HomeScreen";
 
-const App = () => {
-    let text = '';
-    const [description, setDescription] = useState('Testando React Hooks on React Native for SAJ ADV');
-
-    const onChangeTextInput = textInputed => {
-        text = textInputed;
+export default class App extends React.Component {
+    state = {
+        isSideMenuOpen: false
     };
 
-    const onPressButton = () => {
-        setDescription(text);
-    };
+    toggle() {
+        this.setState({
+            isSideMenuOpen: !this.state.isSideMenuOpen,
+        });
+    }
 
-    return (
-        <View style={styles.container}>
-            <TesteHook text={description}/>
-            <TextInput onChangeText={onChangeTextInput}/>
-            <Button onPress={onPressButton} title="Click Here"/>
-        </View>
-    );
+    updateMenuState(isSideMenuOpen) {
+        this.setState({isSideMenuOpen});
+    }
+
+    render() {
+        return (
+            <>
+                <SideMenu menu={<Menu/>}
+                          isOpen={this.state.isSideMenuOpen}
+                          onChange={isOpen => this.updateMenuState(isOpen)}>
+                    <Header
+                        placement="left"
+                        leftComponent={
+                            <Icon name='menu'
+                                  color='#fff'
+                                  onPress={this.toggle.bind(this)}/>
+                        }
+                        centerComponent={{text: 'SAJ ADV', style: {color: '#fff', fontSize: 40, fontWeight: 'bold'}}}
+                    />
+                    <HomeScreen/>
+                </SideMenu>
+            </>
+        );
+    }
 };
 
-export default App;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-});
+const Menu = () => {
+    return (
+        <Text>MENU</Text>
+    );
+};
