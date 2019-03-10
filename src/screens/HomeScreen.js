@@ -37,12 +37,12 @@ const IndicadorCalendario = styled.View`
 
 const IndicadorChart = styled.View`
     position: absolute;
-    top: 43%;
-    left: 36%;
+    top: 47%;
+    left: 39%;
 `;
 
 const IndicadorChartLabel = styled.Text`
-    font-size: 32px;
+    font-size: 26px;
 `;
 
 const CalendarioMes = styled.View`
@@ -82,6 +82,9 @@ const FiltrosRapidos = styled.ScrollView`
 const FiltroRapidoButton = styled(Button).attrs(props => ({
     buttonStyle: {
         borderRadius: 20,
+    },
+    containerStyle: {
+        overflow: 'hidden',
         marginLeft: props.style?.marginLeft,
         marginRight: 10,
     }
