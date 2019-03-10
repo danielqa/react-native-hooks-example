@@ -1,28 +1,44 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Card} from 'react-native-elements';
+import {View, ScrollView} from 'react-native';
+import {Badge, Button, Card, ListItem, Text} from 'react-native-elements';
+import {Calendar} from 'react-native-calendars';
 import {PieChart} from 'react-native-svg-charts';
 import styled from 'styled-components/native';
 
 const Indicadores = styled.ScrollView`
-    flex-direction: row;
+    padding-bottom: 20px;
 `;
 
-const IndicadorContainer = styled.View`
-    padding-left: 20px;
-    padding-right: 20px;
-`;
+const IndicadorCard = styled(Card).attrs(props => ({
+    containerStyle: {
+        paddingTop: 15,
+        paddingRight: 0,
+        paddingBottom: 15,
+        paddingLeft: 0,
+        marginLeft: props.style ? props.style.marginLeft : 0,
+    }
+}))``;
 
 const IndicadorItem = styled.View`
+    width: 130px;
     height: 100px;
-    width: 80px;
-    margin: 0 auto;
+`;
+
+const IndicadorTitle = styled.Text`
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 15px;
+`;
+
+const IndicadorCalendario = styled.View`
+    width: 65px;
 `;
 
 const IndicadorChart = styled.View`
     position: absolute;
-    top: 18px;
-    left: 30%;
+    top: 43%;
+    left: 36%;
 `;
 
 const IndicadorChartLabel = styled.Text`
@@ -54,11 +70,24 @@ const CalendarioDia = styled.View`
 `;
 
 const CalendarioDiaText = styled.Text`
-    font-size: 48px;
+    font-size: 32px;
+    font-weight: bold;
     text-align: center;
 `;
 
-const data = [50, 40, 95];
+const FiltrosRapidos = styled.ScrollView`
+    padding-bottom: 20px;
+`;
+
+const FiltroRapidoButton = styled(Button).attrs(props => ({
+    buttonStyle: {
+        borderRadius: 20,
+        marginLeft: props.style?.marginLeft,
+        marginRight: 10,
+    }
+}))``;
+
+const data = [50, 50, 100];
 const randomColor = () => ('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7);
 const pieData = data
     .filter(value => value > 0)
@@ -70,95 +99,160 @@ const pieData = data
         },
         key: `pie-${index}`,
     }));
+const list = [
+    {
+        title: 'Agravo de instrumento',
+        time: '08:00',
+        description: 'I started doing UI kits! Can you help ...',
+    },
+    {
+        title: 'Agravo de instrumento',
+        time: '08:00',
+        description: 'I started doing UI kits! Can you help ...',
+    },
+    {
+        title: 'Agravo de instrumento',
+        time: '08:00',
+        description: 'I started doing UI kits! Can you help ...',
+    }
+];
 
 const HomeScreen = () => {
     return (
-        <View>
+        <ScrollView>
             <Indicadores horizontal={true}>
-                <Card title="Calendário">
-                    <IndicadorContainer>
-                        <IndicadorItem>
-                            <CalendarioMes>
-                                <CalendarioMesText>março</CalendarioMesText>
-                            </CalendarioMes>
-                            <CalendarioDia>
-                                <CalendarioDiaText>10</CalendarioDiaText>
-                            </CalendarioDia>
-                        </IndicadorItem>
-                    </IndicadorContainer>
-                </Card>
-                <Card title="Tarefas">
-                    <IndicadorContainer>
-                        <IndicadorItem>
-                            <PieChart
-                                innerRadius="85%"
-                                style={{height: 80}}
-                                data={pieData}
-                            />
-                            <IndicadorChart>
-                                <IndicadorChartLabel>40</IndicadorChartLabel>
-                            </IndicadorChart>
-                        </IndicadorItem>
-                    </IndicadorContainer>
-                </Card>
-                <Card title="Intimações">
-                    <IndicadorContainer>
-                        <IndicadorItem>
-                            <PieChart
-                                innerRadius="85%"
-                                style={{height: 80}}
-                                data={pieData}
-                            />
-                            <IndicadorChart>
-                                <IndicadorChartLabel>20</IndicadorChartLabel>
-                            </IndicadorChart>
-                        </IndicadorItem>
-                    </IndicadorContainer>
-                </Card>
-                <Card title="Andamentos">
-                    <IndicadorContainer>
-                        <IndicadorItem>
-                            <PieChart
-                                innerRadius="85%"
-                                style={{height: 80}}
-                                data={pieData}
-                            />
-                            <IndicadorChart>
-                                <IndicadorChartLabel>27</IndicadorChartLabel>
-                            </IndicadorChart>
-                        </IndicadorItem>
-                    </IndicadorContainer>
-                </Card>
-                <Card title="Audiências">
-                    <IndicadorContainer>
-                        <IndicadorItem>
-                            <PieChart
-                                innerRadius="85%"
-                                style={{height: 80}}
-                                data={pieData}
-                            />
-                            <IndicadorChart>
-                                <IndicadorChartLabel>12</IndicadorChartLabel>
-                            </IndicadorChart>
-                        </IndicadorItem>
-                    </IndicadorContainer>
-                </Card>
-                <Card title="Compromissos">
-                    <IndicadorContainer>
-                        <IndicadorItem>
-                            <PieChart
-                                innerRadius="85%"
-                                style={{height: 80}}
-                                data={pieData}
-                            />
-                            <IndicadorChart>
-                                <IndicadorChartLabel>08</IndicadorChartLabel>
-                            </IndicadorChart>
-                        </IndicadorItem>
-                    </IndicadorContainer>
-                </Card>
+                <IndicadorCard style={{marginLeft: 15}}>
+                    <IndicadorItem>
+                        <IndicadorTitle>Calendário</IndicadorTitle>
+                        <View style={{alignItems: 'center'}}>
+                            <IndicadorCalendario>
+                                <CalendarioMes>
+                                    <CalendarioMesText>março</CalendarioMesText>
+                                </CalendarioMes>
+                                <CalendarioDia>
+                                    <CalendarioDiaText>10</CalendarioDiaText>
+                                </CalendarioDia>
+                            </IndicadorCalendario>
+                        </View>
+                    </IndicadorItem>
+                </IndicadorCard>
+                <IndicadorCard>
+                    <IndicadorItem>
+                        <IndicadorTitle>Tarefas</IndicadorTitle>
+                        <PieChart
+                            innerRadius="85%"
+                            style={{height: 60}}
+                            data={pieData}
+                        />
+                        <IndicadorChart>
+                            <IndicadorChartLabel>40</IndicadorChartLabel>
+                        </IndicadorChart>
+                    </IndicadorItem>
+                </IndicadorCard>
+                <IndicadorCard>
+                    <IndicadorItem>
+                        <IndicadorTitle>Intimações</IndicadorTitle>
+                        <PieChart
+                            innerRadius="85%"
+                            style={{height: 60}}
+                            data={pieData}
+                        />
+                        <IndicadorChart>
+                            <IndicadorChartLabel>20</IndicadorChartLabel>
+                        </IndicadorChart>
+                    </IndicadorItem>
+                </IndicadorCard>
+                <IndicadorCard>
+                    <IndicadorItem>
+                        <IndicadorTitle>Andamentos</IndicadorTitle>
+                        <PieChart
+                            innerRadius="85%"
+                            style={{height: 60}}
+                            data={pieData}
+                        />
+                        <IndicadorChart>
+                            <IndicadorChartLabel>27</IndicadorChartLabel>
+                        </IndicadorChart>
+                    </IndicadorItem>
+                </IndicadorCard>
+                <IndicadorCard>
+                    <IndicadorItem>
+                        <IndicadorTitle>Audiências</IndicadorTitle>
+                        <PieChart
+                            innerRadius="85%"
+                            style={{height: 60}}
+                            data={pieData}
+                        />
+                        <IndicadorChart>
+                            <IndicadorChartLabel>12</IndicadorChartLabel>
+                        </IndicadorChart>
+                    </IndicadorItem>
+                </IndicadorCard>
+                <IndicadorCard>
+                    <IndicadorItem>
+                        <IndicadorTitle>Compromissos</IndicadorTitle>
+                        <PieChart
+                            innerRadius="85%"
+                            style={{height: 60}}
+                            data={pieData}
+                        />
+                        <IndicadorChart>
+                            <IndicadorChartLabel>08</IndicadorChartLabel>
+                        </IndicadorChart>
+                    </IndicadorItem>
+                </IndicadorCard>
             </Indicadores>
-        </View>
+            <Calendar/>
+            <Text h4 style={{padding: 20}}>Atividades do dia</Text>
+            <FiltrosRapidos horizontal={true}>
+                <FiltroRapidoButton
+                    title="Todas"
+                    type="outline"
+                    style={{marginLeft: 15}}
+                    icon={
+                        <Badge value="15" status="primary"/>
+                    }
+                />
+                <FiltroRapidoButton
+                    title="Tarefas"
+                    type="outline"
+                    icon={
+                        <Badge value="03" status="warning"/>
+                    }
+                />
+                <FiltroRapidoButton
+                    title="Audiências"
+                    type="outline"
+                    icon={
+                        <Badge value="02" status="error"/>
+                    }
+                />
+                <FiltroRapidoButton
+                    title="Compromissos"
+                    type="outline"
+                    icon={
+                        <Badge value="10" status="success"/>
+                    }
+                />
+            </FiltrosRapidos>
+            <View>
+                {
+                    list.map((item, i) => (
+                        <ListItem
+                            key={i}
+                            title={item.title}
+                            subtitle={
+                                <>
+                                    <Text>{item.time}</Text>
+                                    <Text>{item.description}</Text>
+                                </>
+                            }
+                            rightAvatar={{source: require('../../assets/images/avatar.png')}}
+                        />
+                    ))
+                }
+            </View>
+        </ScrollView>
     );
 };
 
