@@ -1,26 +1,9 @@
 import React, {Component} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import {ListItem, SearchBar} from 'react-native-elements';
 
-import styles from "../styles";
-
-export const Header = () => {
-    return (
-        <View>
-            <Text style={{
-                color: '#333',
-                fontSize: 9,
-                top: 5,
-            }}>DOMINGO, 10 DE MARÇO</Text>
-            <Text style={{
-                color: '#333',
-                fontSize: 32,
-                fontWeight: 'bold',
-            }}>SAJ ADV</Text>
-        </View>
-    );
-};
+import styles from "../../styles";
 
 export default class Menu extends Component {
     state = {

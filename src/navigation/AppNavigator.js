@@ -1,9 +1,10 @@
 import React from 'react';
+import {Icon} from "react-native-elements";
 import {createAppContainer, createDrawerNavigator, createStackNavigator} from 'react-navigation';
 
-import Menu, {Header} from "../components/Template";
-import HomeScreen from "../screens/HomeScreen";
-import {Icon} from "react-native-elements";
+import Header from "../components/layout/Header";
+import Menu from "../components/layout/Menu";
+import HomeScreen from "../screens/Home/HomeScreen";
 
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
@@ -12,7 +13,7 @@ const HomeStack = createStackNavigator({
         headerTitle: <Header/>,
         headerStyle: {
             backgroundColor: '#fff',
-            height: 60,
+            height: 70,
         },
         headerLeft: (
             <Icon type='font-awesome'
@@ -21,7 +22,8 @@ const HomeStack = createStackNavigator({
                   onPress={navigation.toggleDrawer}/>
         ),
         headerLeftContainerStyle: {
-            marginLeft: 15
+            marginLeft: 15,
+            marginTop: 15,
         }
     })
 });
