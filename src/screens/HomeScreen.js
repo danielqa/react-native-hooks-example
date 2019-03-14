@@ -4,6 +4,7 @@ import {Badge, Button, Card, ListItem, Text} from 'react-native-elements';
 import {Calendar} from 'react-native-calendars';
 import {PieChart} from 'react-native-svg-charts';
 import styled from 'styled-components/native';
+import styles from "../styles";
 
 const Indicadores = styled.ScrollView`
     padding-bottom: 20px;
@@ -132,140 +133,142 @@ const list = [
 
 const HomeScreen = () => {
     return (
-        <ScrollView>
-            <Indicadores horizontal={true}>
-                <IndicadorCard style={{marginLeft: 15}}>
-                    <IndicadorItem>
-                        <IndicadorTitle>Calendário</IndicadorTitle>
-                        <View style={{alignItems: 'center'}}>
-                            <IndicadorCalendario>
-                                <CalendarioMes>
-                                    <CalendarioMesText>março</CalendarioMesText>
-                                </CalendarioMes>
-                                <CalendarioDia>
-                                    <CalendarioDiaText>10</CalendarioDiaText>
-                                </CalendarioDia>
-                            </IndicadorCalendario>
-                        </View>
-                    </IndicadorItem>
-                </IndicadorCard>
-                <IndicadorCard>
-                    <IndicadorItem>
-                        <IndicadorTitle>Tarefas</IndicadorTitle>
-                        <PieChart
-                            innerRadius="85%"
-                            style={{height: 60}}
-                            data={pieData}
-                        />
-                        <IndicadorChart>
-                            <IndicadorChartLabel>40</IndicadorChartLabel>
-                        </IndicadorChart>
-                    </IndicadorItem>
-                </IndicadorCard>
-                <IndicadorCard>
-                    <IndicadorItem>
-                        <IndicadorTitle>Intimações</IndicadorTitle>
-                        <PieChart
-                            innerRadius="85%"
-                            style={{height: 60}}
-                            data={pieData}
-                        />
-                        <IndicadorChart>
-                            <IndicadorChartLabel>20</IndicadorChartLabel>
-                        </IndicadorChart>
-                    </IndicadorItem>
-                </IndicadorCard>
-                <IndicadorCard>
-                    <IndicadorItem>
-                        <IndicadorTitle>Andamentos</IndicadorTitle>
-                        <PieChart
-                            innerRadius="85%"
-                            style={{height: 60}}
-                            data={pieData}
-                        />
-                        <IndicadorChart>
-                            <IndicadorChartLabel>27</IndicadorChartLabel>
-                        </IndicadorChart>
-                    </IndicadorItem>
-                </IndicadorCard>
-                <IndicadorCard>
-                    <IndicadorItem>
-                        <IndicadorTitle>Audiências</IndicadorTitle>
-                        <PieChart
-                            innerRadius="85%"
-                            style={{height: 60}}
-                            data={pieData}
-                        />
-                        <IndicadorChart>
-                            <IndicadorChartLabel>12</IndicadorChartLabel>
-                        </IndicadorChart>
-                    </IndicadorItem>
-                </IndicadorCard>
-                <IndicadorCard>
-                    <IndicadorItem>
-                        <IndicadorTitle>Compromissos</IndicadorTitle>
-                        <PieChart
-                            innerRadius="85%"
-                            style={{height: 60}}
-                            data={pieData}
-                        />
-                        <IndicadorChart>
-                            <IndicadorChartLabel>08</IndicadorChartLabel>
-                        </IndicadorChart>
-                    </IndicadorItem>
-                </IndicadorCard>
-            </Indicadores>
-            <Calendar/>
-            <Text h4 style={{padding: 20}}>Atividades do dia</Text>
-            <FiltrosRapidos horizontal={true}>
-                <FiltroRapidoButton
-                    title="Todas"
-                    type="outline"
-                    style={{marginLeft: 15}}
-                    icon={
-                        <Badge value="15" status="primary"/>
+        <View style={styles.container}>
+            <ScrollView>
+                <Indicadores horizontal={true}>
+                    <IndicadorCard style={{marginLeft: 15}}>
+                        <IndicadorItem>
+                            <IndicadorTitle>Calendário</IndicadorTitle>
+                            <View style={{alignItems: 'center'}}>
+                                <IndicadorCalendario>
+                                    <CalendarioMes>
+                                        <CalendarioMesText>março</CalendarioMesText>
+                                    </CalendarioMes>
+                                    <CalendarioDia>
+                                        <CalendarioDiaText>10</CalendarioDiaText>
+                                    </CalendarioDia>
+                                </IndicadorCalendario>
+                            </View>
+                        </IndicadorItem>
+                    </IndicadorCard>
+                    <IndicadorCard>
+                        <IndicadorItem>
+                            <IndicadorTitle>Tarefas</IndicadorTitle>
+                            <PieChart
+                                innerRadius="85%"
+                                style={{height: 60}}
+                                data={pieData}
+                            />
+                            <IndicadorChart>
+                                <IndicadorChartLabel>40</IndicadorChartLabel>
+                            </IndicadorChart>
+                        </IndicadorItem>
+                    </IndicadorCard>
+                    <IndicadorCard>
+                        <IndicadorItem>
+                            <IndicadorTitle>Intimações</IndicadorTitle>
+                            <PieChart
+                                innerRadius="85%"
+                                style={{height: 60}}
+                                data={pieData}
+                            />
+                            <IndicadorChart>
+                                <IndicadorChartLabel>20</IndicadorChartLabel>
+                            </IndicadorChart>
+                        </IndicadorItem>
+                    </IndicadorCard>
+                    <IndicadorCard>
+                        <IndicadorItem>
+                            <IndicadorTitle>Andamentos</IndicadorTitle>
+                            <PieChart
+                                innerRadius="85%"
+                                style={{height: 60}}
+                                data={pieData}
+                            />
+                            <IndicadorChart>
+                                <IndicadorChartLabel>27</IndicadorChartLabel>
+                            </IndicadorChart>
+                        </IndicadorItem>
+                    </IndicadorCard>
+                    <IndicadorCard>
+                        <IndicadorItem>
+                            <IndicadorTitle>Audiências</IndicadorTitle>
+                            <PieChart
+                                innerRadius="85%"
+                                style={{height: 60}}
+                                data={pieData}
+                            />
+                            <IndicadorChart>
+                                <IndicadorChartLabel>12</IndicadorChartLabel>
+                            </IndicadorChart>
+                        </IndicadorItem>
+                    </IndicadorCard>
+                    <IndicadorCard>
+                        <IndicadorItem>
+                            <IndicadorTitle>Compromissos</IndicadorTitle>
+                            <PieChart
+                                innerRadius="85%"
+                                style={{height: 60}}
+                                data={pieData}
+                            />
+                            <IndicadorChart>
+                                <IndicadorChartLabel>08</IndicadorChartLabel>
+                            </IndicadorChart>
+                        </IndicadorItem>
+                    </IndicadorCard>
+                </Indicadores>
+                <Calendar/>
+                <Text h4 style={{padding: 20}}>Atividades do dia</Text>
+                <FiltrosRapidos horizontal={true}>
+                    <FiltroRapidoButton
+                        title="Todas"
+                        type="outline"
+                        style={{marginLeft: 15}}
+                        icon={
+                            <Badge value="15" status="primary"/>
+                        }
+                    />
+                    <FiltroRapidoButton
+                        title="Tarefas"
+                        type="outline"
+                        icon={
+                            <Badge value="03" status="warning"/>
+                        }
+                    />
+                    <FiltroRapidoButton
+                        title="Audiências"
+                        type="outline"
+                        icon={
+                            <Badge value="02" status="error"/>
+                        }
+                    />
+                    <FiltroRapidoButton
+                        title="Compromissos"
+                        type="outline"
+                        icon={
+                            <Badge value="10" status="success"/>
+                        }
+                    />
+                </FiltrosRapidos>
+                <View>
+                    {
+                        list.map((item, i) => (
+                            <ListItem
+                                key={i}
+                                title={item.title}
+                                subtitle={
+                                    <>
+                                        <Text>{item.time}</Text>
+                                        <Text>{item.description}</Text>
+                                    </>
+                                }
+                                rightAvatar={{source: require('../../assets/images/avatar.png')}}
+                            />
+                        ))
                     }
-                />
-                <FiltroRapidoButton
-                    title="Tarefas"
-                    type="outline"
-                    icon={
-                        <Badge value="03" status="warning"/>
-                    }
-                />
-                <FiltroRapidoButton
-                    title="Audiências"
-                    type="outline"
-                    icon={
-                        <Badge value="02" status="error"/>
-                    }
-                />
-                <FiltroRapidoButton
-                    title="Compromissos"
-                    type="outline"
-                    icon={
-                        <Badge value="10" status="success"/>
-                    }
-                />
-            </FiltrosRapidos>
-            <View>
-                {
-                    list.map((item, i) => (
-                        <ListItem
-                            key={i}
-                            title={item.title}
-                            subtitle={
-                                <>
-                                    <Text>{item.time}</Text>
-                                    <Text>{item.description}</Text>
-                                </>
-                            }
-                            rightAvatar={{source: require('../../assets/images/avatar.png')}}
-                        />
-                    ))
-                }
-            </View>
-        </ScrollView>
+                </View>
+            </ScrollView>
+        </View>
     );
 };
 

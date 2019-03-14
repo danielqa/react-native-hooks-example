@@ -9,8 +9,5 @@ export default StyleSheet.create({
     },
     menu: {
         flex: 1,
-        width: window.width,
-        height: window.height,
-        backgroundColor: '#fff',
     },
 });
